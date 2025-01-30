@@ -1,3 +1,5 @@
+
+
 import {
     List,
     Datagrid,
@@ -11,20 +13,48 @@ import {
     DateInput,
     ReferenceInput,
     SelectInput,
-    required
+    required,
+    Filter,
+    useRecordContext,
+    useGetOne
 } from 'react-admin';
 
+const EmprestimoFilter = (props) => (
+    <Filter {...props}>
+        <ReferenceInput source="utilizadorId" reference="utilizadores" label="Utilizador">
+            <SelectInput optionText="nome" />
+        </ReferenceInput>
+        <ReferenceInput source="livroId" reference="livros" label="Livro">
+            <SelectInput optionText="titulo" />
+        </ReferenceInput>
+    </Filter>
+);
+
+const LivroInfo = () => {
+    const record = useRecordContext();
+    const { data: livro } = useGetOne('livros', { id: record.livroId });
+    
+    if (!livro) return null;
+    return <span>{livro.titulo}</span>;
+};
+
+const UtilizadorInfo = () => {
+    const record = useRecordContext();
+    const { data: utilizador } = useGetOne('utilizadores', { id: record.utilizadorId });
+    
+    if (!utilizador) return null;
+    return <span>{utilizador.nome}</span>;
+};
+
 export const EmprestimoList = props => (
-    <List {...props}>
+    <List {...props} filters={<EmprestimoFilter />}>
         <Datagrid>
-            <ReferenceField source="utilizadorId" reference="utilizadores">
-                <TextField source="nome" />
-            </ReferenceField>
-            <ReferenceField source="livroId" reference="livros">
-                <TextField source="titulo" />
-            </ReferenceField>
-            <DateField source="dataEmprestimo" />
-            <DateField source="dataDevolucao" />
+            <TextField source="utilizadorId" label="ID Utilizador" />
+            <UtilizadorInfo label="Utilizador" />
+            <TextField source="livroId" label="ID Livro" />
+            <LivroInfo label="Livro" />
+            <DateField source="dataEmprestimo" label="Data Empréstimo" />
+            <DateField source="dataDevolucao" label="Data Devolução" />
             <EditButton />
         </Datagrid>
     </List>

@@ -1,16 +1,20 @@
-FROM node:18
+FROM node:18-alpine
 
 WORKDIR /app
 
+# Copiar arquivos de dependências
 COPY package*.json ./
 
-RUN npm install --legacy-peer-deps
+# Instalar dependências
+RUN npm install
 
+# Copiar código fonte
 COPY . .
 
-ENV NODE_OPTIONS=--openssl-legacy-provider
-ENV PORT=3001
+# Expor porta do React
+EXPOSE 3001
 
-EXPOSE ${PORT}
+# Comando para iniciar a aplicação
+ENV PORT=3001
 
 CMD ["npm", "start"]

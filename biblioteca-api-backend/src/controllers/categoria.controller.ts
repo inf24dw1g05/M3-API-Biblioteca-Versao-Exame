@@ -1,52 +1,64 @@
-import {
-  Count,
-  CountSchema,
-  Filter,
-  FilterExcludingWhere,
-  repository,
-  Where,
-} from '@loopback/repository';
-import {
-  del,
-  get,
-  getModelSchemaRef,
-  param,
-  patch,
-  post,
-  put,
-  requestBody,
-  response,
-} from '@loopback/rest';
-import {Categoria} from '../models';
-import {CategoriaRepository} from '../repositories';
 
-export class CategoriaController {
-  constructor(
-    @repository(CategoriaRepository)
-    public categoriaRepository: CategoriaRepository,
-  ) { }
-
-  @post('/categorias')
-  @response(200, {
-    description: 'Categoria model instance',
-    content: {'application/json': {schema: getModelSchemaRef(Categoria)}},
-  })
-  async create(
-    @requestBody({
-      content: {
-        'application/json': {
-          schema: getModelSchemaRef(Categoria, {
-            title: 'NewCategoria',
-            exclude: [],
-          }),
-        },
-      },
-    })
-    categoria: Omit<Categoria, 'id'>,
-  ): Promise<Categoria> {
-    return this.categoriaRepository.create(categoria);
-  }
-
+    import {
+      Count,
+      CountSchema,
+      Filter,
+      FilterExcludingWhere,
+      repository,
+      Where,
+    } from '@loopback/repository';
+    import {
+      post,
+      param,
+      get,
+      getModelSchemaRef,
+      patch,
+      put,
+      del,
+      requestBody,
+      response,
+      HttpErrors,
+    } from '@loopback/rest';
+    import {Categoria} from '../models';
+    import {CategoriaRepository} from '../repositories';
+    
+    export class CategoriaController {
+      constructor(
+        @repository(CategoriaRepository)
+        public categoriaRepository: CategoriaRepository,
+      ) {}
+    
+      @post('/categorias')
+      @response(200, {
+        description: 'Categoria model instance',
+        content: {'application/json': {schema: getModelSchemaRef(Categoria)}},
+      })
+      async create(
+        @requestBody({
+          content: {
+            'application/json': {
+              schema: getModelSchemaRef(Categoria, {
+                title: 'NewCategoria',
+                exclude: ['id'],
+              }),
+            },
+          },
+        })
+        categoria: Omit<Categoria, 'id'>,
+      ): Promise<Categoria> {
+        // Verificar se já existe uma categoria com o mesmo nome
+        const categoriaExistente = await this.categoriaRepository.findOne({
+          where: {
+            nome: categoria.nome
+          }
+        });
+    
+        if (categoriaExistente) {
+          throw new HttpErrors.Conflict('Já existe uma categoria com este nome');
+        }
+    
+        return this.categoriaRepository.create(categoria);
+      }
   @get('/categorias/count')
   @response(200, {
     description: 'Categoria model count',

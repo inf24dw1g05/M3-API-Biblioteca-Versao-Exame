@@ -1,9 +1,9 @@
 {
   "ids": {
-    "Categoria": 24,
+    "Categoria": 27,
     "Livro": 4,
     "Utilizador": 3,
-    "Emprestimo": 3
+    "Emprestimo": 9
   },
   "models": {
     "Categoria": {
@@ -25,7 +25,9 @@
       "18": "{\"nome\":\"Drama\",\"id\":18}",
       "20": "{\"nome\":\"Fantasia Épica\",\"id\":20}",
       "22": "{\"nome\":\"Terror\",\"id\":22}",
-      "23": "{\"nome\":\"Prosa Poética\",\"id\":23}"
+      "23": "{\"nome\":\"Prosa Poética\",\"id\":23}",
+      "25": "{\"nome\":\"Romance\",\"id\":25}",
+      "26": "{\"nome\":\"Romance\",\"id\":26}"
     },
     "Livro": {
       "4": "{\"id\":4,\"titulo\":\"1984\",\"autor\":\"George Orwell\",\"anoPublicacao\":1949,\"categoriaId\":3}",
@@ -92,36 +94,10 @@
       "30": "{\"nome\":\"Bruno Silva\",\"email\":\"bruno.silva@example.com\",\"tipoUtilizador\":2,\"id\":30}"
     },
     "Emprestimo": {
-      "1": "{\"dataEmprestimo\":\"2025-01-10\",\"dataDevolucao\":\"2025-01-25\",\"livroId\":33,\"utilizadorId\":1,\"id\":1}",
-      "2": "{\"dataEmprestimo\":\"2025-01-10\",\"dataDevolucao\":\"2025-01-25\",\"livroId\":33,\"utilizadorId\":2,\"id\":2}",
-      "3": "{\"nome\":\"Ana Silva\",\"email\":\"ana.silva@example.com\",\"tipoUtilizador\":2,\"id\":3,\"utilizadorId\":28,\"livroId\":28,\"dataEmprestimo\":\"2025-01-15\",\"dataDevolucao\":\"2025-01-25\"}",
-      "4": "{\"nome\":\"João Fernandes\",\"email\":\"joao.fernandes@example.com\",\"tipoUtilizador\":2,\"id\":4,\"utilizadorId\":24,\"livroId\":21,\"dataEmprestimo\":\"2025-02-01\",\"dataDevolucao\":\"2025-02-07\"}",
-      "5": "{\"nome\":\"Carla Sousa\",\"email\":\"carla.sousa@example.com\",\"tipoUtilizador\":2,\"id\":5,\"utilizadorId\":30,\"livroId\":19,\"dataEmprestimo\":\"2025-01-08\",\"dataDevolucao\":\"2025-01-25\"}",
-      "6": "{\"nome\":\"Pedro Costa\",\"email\":\"pedro.costa@example.com\",\"tipoUtilizador\":2,\"id\":6,\"utilizadorId\":18,\"livroId\":22,\"dataEmprestimo\":\"2025-01-22\",\"dataDevolucao\":\"2025-01-30\"}",
-      "7": "{\"nome\":\"Maria Oliveira\",\"email\":\"maria.oliveira@example.com\",\"tipoUtilizador\":2,\"id\":7,\"utilizadorId\":15,\"livroId\":22,\"dataEmprestimo\":\"2025-01-15\",\"dataDevolucao\":\"2025-01-24\"}",
-      "8": "{\"nome\":\"Tiago Santos\",\"email\":\"tiago.santos@example.com\",\"tipoUtilizador\":2,\"id\":8,\"utilizadorId\":19,\"livroId\":24,\"dataEmprestimo\":\"2025-01-18\",\"dataDevolucao\":\"2025-01-19\"}",
-      "9": "{\"nome\":\"Rita Lopes\",\"email\":\"rita.lopes@example.com\",\"tipoUtilizador\":2,\"id\":9,\"utilizadorId\":14,\"livroId\":18,\"dataEmprestimo\":\"2025-01-14\",\"dataDevolucao\":\"2025-01-18\"}",
-      "10": "{\"nome\":\"José Almeida\",\"email\":\"jose.almeida@example.com\",\"tipoUtilizador\":2,\"id\":10,\"utilizadorId\":16,\"livroId\":29,\"dataEmprestimo\":\"2025-01-09\",\"dataDevolucao\":\"2025-01-04\"}",
-      "11": "{\"nome\":\"Helena Matos\",\"email\":\"helena.matos@example.com\",\"tipoUtilizador\":2,\"id\":11}",
-      "12": "{\"nome\":\"Paulo Ramos\",\"email\":\"paulo.ramos@example.com\",\"tipoUtilizador\":2,\"id\":12}",
-      "13": "{\"nome\":\"Inês Marques\",\"email\":\"ines.marques@example.com\",\"tipoUtilizador\":2,\"id\":13}",
-      "14": "{\"nome\":\"Diogo Martins\",\"email\":\"diogo.martins@example.com\",\"tipoUtilizador\":2,\"id\":14}",
-      "15": "{\"nome\":\"Joana Nunes\",\"email\":\"joana.nunes@example.com\",\"tipoUtilizador\":2,\"id\":15}",
-      "16": "{\"nome\":\"Ricardo Gomes\",\"email\":\"ricardo.gomes@example.com\",\"tipoUtilizador\":2,\"id\":16}",
-      "17": "{\"nome\":\"Cláudia Carvalho\",\"email\":\"claudia.carvalho@example.com\",\"tipoUtilizador\":2,\"id\":17}",
-      "18": "{\"nome\":\"André Torres\",\"email\":\"andre.torres@example.com\",\"tipoUtilizador\":2,\"id\":18}",
-      "19": "{\"nome\":\"Sara Figueiredo\",\"email\":\"sara.figueiredo@example.com\",\"tipoUtilizador\":2,\"id\":19}",
-      "20": "{\"nome\":\"Vítor Monteiro\",\"email\":\"vitor.monteiro@example.com\",\"tipoUtilizador\":2,\"id\":20}",
-      "21": "{\"nome\":\"Marta Teixeira\",\"email\":\"marta.teixeira@example.com\",\"tipoUtilizador\":2,\"id\":21}",
-      "22": "{\"nome\":\"Alexandre Rocha\",\"email\":\"alexandre.rocha@example.com\",\"tipoUtilizador\":2,\"id\":22}",
-      "23": "{\"nome\":\"Beatriz Mendes\",\"email\":\"beatriz.mendes@example.com\",\"tipoUtilizador\":2,\"id\":23}",
-      "24": "{\"nome\":\"Gonçalo Freitas\",\"email\":\"goncalo.freitas@example.com\",\"tipoUtilizador\":2,\"id\":24}",
-      "25": "{\"nome\":\"Diana Moreira\",\"email\":\"diana.moreira@example.com\",\"tipoUtilizador\":2,\"id\":25}",
-      "26": "{\"nome\":\"Fábio Pires\",\"email\":\"fabio.pires@example.com\",\"tipoUtilizador\":2,\"id\":26}",
-      "27": "{\"nome\":\"Mariana Cunha\",\"email\":\"mariana.cunha@example.com\",\"tipoUtilizador\":2,\"id\":27}",
-      "28": "{\"nome\":\"Nuno Barros\",\"email\":\"nuno.barros@example.com\",\"tipoUtilizador\":2,\"id\":28}",
-      "29": "{\"nome\":\"Vanessa Sousa\",\"email\":\"vanessa.sousa@example.com\",\"tipoUtilizador\":2,\"id\":29}",
-      "30": "{\"nome\":\"Bruno Silva\",\"email\":\"bruno.silva@example.com\",\"tipoUtilizador\":2,\"id\":30}"
+      "5": "{\"dataEmprestimo\":\"2025-01-06\",\"dataDevolucao\":\"2025-01-24\",\"livroId\":30,\"utilizadorId\":29,\"id\":5}",
+      "6": "{\"dataEmprestimo\":\"2025-01-11\",\"dataDevolucao\":\"2025-01-25\",\"livroId\":31,\"utilizadorId\":23,\"id\":6}",
+      "7": "{\"dataEmprestimo\":\"2025-02-01\",\"dataDevolucao\":\"2025-02-08\",\"livroId\":31,\"utilizadorId\":29,\"id\":7}",
+      "8": "{\"dataEmprestimo\":\"2025-02-01\",\"dataDevolucao\":\"2025-02-08\",\"livroId\":31,\"utilizadorId\":28,\"id\":8}"
     }
   }
 }

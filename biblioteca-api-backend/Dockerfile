@@ -1,16 +1,18 @@
-FROM node:18
+FROM node:18-alpine
 
 WORKDIR /app
 
+# Copiar arquivos de dependências
 COPY package*.json ./
 
+# Instalar dependências
 RUN npm install
 
+# Copiar código fonte
 COPY . .
 
-ENV HOST=0.0.0.0
-ENV PORT=3000
+# Expor porta da API
+EXPOSE 3000
 
-EXPOSE ${PORT}
-
+# Comando para iniciar a aplicação
 CMD ["npm", "start"]

@@ -1,3 +1,5 @@
+
+
 import {
     List,
     Datagrid,
@@ -7,7 +9,9 @@ import {
     Create,
     SimpleForm,
     TextInput,
-    required
+    required,
+    useNotify,
+    useRedirect,
 } from 'react-admin';
 
 export const CategoriaList = props => (
@@ -19,15 +23,26 @@ export const CategoriaList = props => (
     </List>
 );
 
-const CategoriaForm = props => (
-    <SimpleForm {...props}>
-        <TextInput 
-            source="nome" 
-            validate={[required()]} 
-            fullWidth
-        />
-    </SimpleForm>
-);
+const CategoriaForm = props => {
+    const notify = useNotify();
+    const redirect = useRedirect();
+
+    const onError = (error) => {
+        if (error.body.error.message === 'Já existe uma categoria com este nome') {
+            notify('Já existe uma categoria com este nome', { type: 'error' });
+        }
+    };
+
+    return (
+        <SimpleForm {...props} onError={onError}>
+            <TextInput 
+                source="nome" 
+                validate={[required()]} 
+                fullWidth
+            />
+        </SimpleForm>
+    );
+};
 
 export const CategoriaEdit = props => (
     <Edit {...props}>
