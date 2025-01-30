@@ -9,6 +9,7 @@ import {RestApplication} from '@loopback/rest';
 import {ServiceMixin} from '@loopback/service-proxy';
 import path from 'path';
 import {MySequence} from './sequence';
+import * as cors from 'cors';
 
 export {ApplicationConfig};
 
@@ -17,6 +18,10 @@ export class BibliotecaApiApplication extends BootMixin(
 ) {
   constructor(options: ApplicationConfig = {}) {
     super(options);
+
+    
+
+    this.bind('rest.host').to('0.0.0.0');
 
     // Set up the custom sequence
     this.sequence(MySequence);

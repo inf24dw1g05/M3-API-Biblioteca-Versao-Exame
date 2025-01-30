@@ -1,20 +1,20 @@
-FROM node:18-alpine
+FROM node:18
 
 WORKDIR /app
 
-# Copiar arquivos de dependências
 COPY package*.json ./
-
-# Instalar dependências
 RUN npm install
 
-# Copiar código fonte
 COPY . .
 
-# Expor porta do React
+RUN npm run build
+
+#Instalar o serve globalmente
+RUN npm install -g serve
+
+RUN echo "REACT_APP_API_URL: $REACT_APP_API_URL"
+
 EXPOSE 3001
 
-# Comando para iniciar a aplicação
-ENV PORT=3001
-
-CMD ["npm", "start"]
+#Usar o serve para servir a build
+CMD ["serve", "-s", "build", "-l", "3001"]

@@ -1,34 +1,29 @@
 version: '3.8'
 
 services:
-  backend:
-    build: 
-      context: ./backend
-      dockerfile: Dockerfile
-    image: inf24dw1g05/biblioteca-backend:latest  
-    container_name: biblioteca_backend
-    restart: unless-stopped
+  api:
+    image: biblioteca-api
+    build:
+      context: ./biblioteca-api-backend
     ports:
       - "3000:3000"
     networks:
-      - biblioteca_network
+      - app-network
 
-  frontend:
+  admin:
+    image: biblioteca-frontend
     build:
-      context: ./frontend
-      dockerfile: Dockerfile
-    image: inf24dw1g05/biblioteca-frontend:latest  
-    container_name: biblioteca_frontend
-    restart: unless-stopped
+      context: ./biblioteca-admin-frontend
     ports:
       - "3001:3001"
     environment:
-      - REACT_APP_API_URL=http://localhost:3000
-    depends_on:
-      - backend
+      - PORT=3001
+      - REACT_APP_API_URL=http://api:3000/
     networks:
-      - biblioteca_network
+      - app-network
+    depends_on:
+      - api
 
 networks:
-  biblioteca_network:
+  app-network:
     driver: bridge
