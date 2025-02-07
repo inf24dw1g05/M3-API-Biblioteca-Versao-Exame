@@ -1,7 +1,7 @@
 import {Entity, hasMany, model, property} from '@loopback/repository';
 import {Emprestimo} from './emprestimo.model';
 
-@model()
+@model({name: 'Utilizador'})
 export class Utilizador extends Entity {
   @property({
     type: 'number',

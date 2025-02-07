@@ -9,12 +9,12 @@ COPY . .
 
 RUN npm run build
 
-#Instalar o serve globalmente
+#Instalar o servidor globalmente
 RUN npm install -g serve
 
 RUN echo "REACT_APP_API_URL: $REACT_APP_API_URL"
 
 EXPOSE 3001
 
-#Usar o serve para servir a build
+
 CMD ["serve", "-s", "build", "-l", "3001"]

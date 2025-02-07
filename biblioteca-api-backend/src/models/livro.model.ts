@@ -2,7 +2,7 @@ import {belongsTo, Entity, hasMany, model, property} from '@loopback/repository'
 import {Categoria} from './categoria.model';
 import {Emprestimo} from './emprestimo.model';
 
-@model()
+@model({name: 'Livro'})
 export class Livro extends Entity {
   @property({
     type: 'number',

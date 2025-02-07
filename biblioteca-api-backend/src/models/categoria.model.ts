@@ -1,7 +1,7 @@
 import {Entity, hasMany, model, property} from '@loopback/repository';
 import {Livro} from './livro.model';
 
-@model()
+@model({name: 'Categoria'})
 export class Categoria extends Entity {
   @property({
     type: 'number',

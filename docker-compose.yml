@@ -1,7 +1,14 @@
-version: '3.8'
-
 services:
   api:
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      - DB_HOST=biblioteca-database
+      - DB_PORT=3306
+      - DB_USER=root
+      - DB_PASSWORD=1f18ac3cd637
+      - DB_DATABASE=biblioteca_m3_recurso
     image: biblioteca-api
     build:
       context: ./biblioteca-api-backend
@@ -24,6 +31,32 @@ services:
     depends_on:
       - api
 
+  db:
+    build:
+      context: ./database
+      dockerfile: Dockerfile
+    image: a045580/db-m3-biblioteca:latest
+    container_name: biblioteca-database
+    ports:
+      - "3307:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=1f18ac3cd637
+      - MYSQL_DATABASE=biblioteca_m3_recurso
+    volumes:
+      - db-datasource:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p1f18ac3cd637"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+      start_period: 10s
+    restart: always
+    networks:
+      - app-network
+
 networks:
   app-network:
     driver: bridge
+
+volumes:
+  db-datasource:

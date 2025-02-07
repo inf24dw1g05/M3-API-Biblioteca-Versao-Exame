@@ -49,6 +49,7 @@
     "!*/__tests__"
   ],
   "dependencies": {
+    "loopback-connector-mysql": "^5.3.0",
     "@loopback/boot": "^7.0.9",
     "@loopback/core": "^6.1.6",
     "@loopback/repository": "^7.0.9",
