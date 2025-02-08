@@ -1,4 +1,2 @@
-CREATE USER IF NOT EXISTS 'root'@'%' IDENTIFIED WITH mysql_native_password BY '1f18ac3cd637';
 ALTER USER 'root'@'%' IDENTIFIED WITH mysql_native_password BY '1f18ac3cd637';
-GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' WITH GRANT OPTION;
 FLUSH PRIVILEGES;
