@@ -4,11 +4,11 @@ services:
       db:
         condition: service_healthy
     environment:
-      - DB_HOST=biblioteca-database
-      - DB_PORT=3306
-      - DB_USER=root
-      - DB_PASSWORD=1f18ac3cd637
-      - DB_DATABASE=biblioteca_m3_recurso
+      DB_HOST: biblioteca-database
+      DB_PORT: 3306
+      DB_USER: root
+      DB_PASSWORD: 1f18ac3cd637
+      DB_DATABASE: biblioteca_m3_recurso
     image: biblioteca-api
     build:
       context: ./biblioteca-api-backend
@@ -24,24 +24,21 @@ services:
     ports:
       - "3001:3001"
     environment:
-      - PORT=3001
-      - REACT_APP_API_URL=http://api:3000/
+      PORT: 3001
+      REACT_APP_API_URL: http://api:3000/
     networks:
       - app-network
     depends_on:
       - api
 
   db:
-    build:
-      context: ./database
-      dockerfile: Dockerfile
-    image: a045580/db-m3-biblioteca:latest
+    image: a045580/db-m3-biblioteca:latest  
     container_name: biblioteca-database
     ports:
       - "3307:3306"
     environment:
-      - MYSQL_ROOT_PASSWORD=1f18ac3cd637
-      - MYSQL_DATABASE=biblioteca_m3_recurso
+      MYSQL_ROOT_PASSWORD: 1f18ac3cd637
+      MYSQL_DATABASE: biblioteca_m3_recurso
     volumes:
       - db-datasource:/var/lib/mysql
     healthcheck:
